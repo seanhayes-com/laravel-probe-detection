@@ -13,7 +13,7 @@ class Probe
         //$this->val = 'probe';
     }
 
-    public function logRequest($identifier='default')
+    public static function logRequest($identifier='default')
     {
         $do_geolocate = config('probe.geolocate_ip');
 		$do_hostname = config('probe.resolve_hostnames');
