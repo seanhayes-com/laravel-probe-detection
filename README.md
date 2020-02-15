@@ -6,7 +6,7 @@ A package to log known website probing attacks
 You can install the package via composer:
 
 ``` bash
-composer require seanhayes-com/laravel-probe-detection
+composer require seanhayes-com/laravel-probe-detection=dev-master
 ```
 
 The package will automatically register itself.
