@@ -11,8 +11,10 @@ class CreateProbeLogTables extends Migration
     {
         Schema::create('probe_log', function (Blueprint $table) {
             $table->increments('id');
+			$table->string('identifier');
 			$table->string('ip', 15);
 			$table->string('hostname');
+			$table->string('host');
 			$table->string('uri');
 			$table->string('refer');
 			$table->string('agent');
