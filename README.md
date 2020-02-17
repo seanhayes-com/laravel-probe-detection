@@ -33,7 +33,7 @@ Change settings in config/probe.php
 
 Add routes to handle certain common attack vectors or URIs added to watch_uris in config/probe.php
 
-```bash
+```php
 Route::get('/wp-login.php', function () {
 	\SeanHayes\Probe\Probe::logRequest();
 });
@@ -63,10 +63,11 @@ Route::post('/{name}/wp-admin/', function () {
 ## Usage
 Include the path in your Controller or AppServiceProvider
 
-```bash
+```php
 use SeanHayes\Probe\Probe;
 ```
+And the call to process the request in your method
 
-```bash
+```php
 Probe::logRequest();
 ```
