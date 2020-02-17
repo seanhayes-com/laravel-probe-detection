@@ -7,12 +7,6 @@ use Torann\GeoIP\Facades\GeoIP;
 
 class Probe
 {
-    //protected $inv;
-
-    public function __construct()
-    {
-        //$this->val = 'probe';
-    }
 
     public static function logRequest($identifier = 'default')
     {
@@ -31,6 +25,7 @@ class Probe
         $watch_agents = config('probe.watch_agents');
         $watch_isocodes = config('probe.watch_isocodes');
         $watch_refers = config('probe.watch_refers');
+		$watch_uris = config('probe.watch_uris');
 
         $dolog = false;
         $doban = false;
@@ -52,7 +47,7 @@ class Probe
         $target['created_at'] = date('Y-m-d H:i:s');
         $target['updated_at'] = date('Y-m-d H:i:s');
         $target['iso_code'] = (isset($target_location->iso_code) && !empty($target_location->iso_code)) ? $target_location->iso_code : '';
-
+		
         $ignore_this_ip = self::exactInList($target['ip'], $ignore_ips);
         $ignore_this_agent = self::matchInList($target['agent'], $ignore_agents);
         $ignore_this_isocode = self::exactInList($target['iso_code'], $ignore_isocodes);
@@ -68,8 +63,9 @@ class Probe
         $watch_this_agent = self::matchInList($target['agent'], $watch_agents);
         $watch_this_isocode = self::exactInList($target['iso_code'], $watch_isocodes);
         $watch_this_refer = self::matchInList($target['refer'], $watch_refers);
-
-        if ($watch_this_ip || $watch_this_agent || $watch_this_isocode || $watch_this_refer) {
+		$watch_this_uri = self::matchInList($target['uri'], $watch_uris);
+		
+        if ($watch_this_ip || $watch_this_agent || $watch_this_isocode || $watch_this_refer || $watch_this_uri) {
             $dolog = true;
             $doban = true;
         }

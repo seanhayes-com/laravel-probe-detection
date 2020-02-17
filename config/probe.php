@@ -47,7 +47,7 @@ return [
      * IP addresses to auto ban
      */
     'watch_ips' => array(
-  
+  	  	
     ),
 	
     /*
@@ -89,6 +89,15 @@ return [
     'watch_refers' => array(
   	  	'.cn',
 		'.ru',
+    ),
+	
+    /*
+     * URIs to auto ban
+     */
+    'watch_uris' => array(
+  	  	'/wp-login.php',
+		'/wp-admin.php',
+		'UNION%20SELECT%20',
     ),
 	
 	
