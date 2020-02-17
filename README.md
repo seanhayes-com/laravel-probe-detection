@@ -1,6 +1,11 @@
 # Laravel Probe Detection
 A package to log known website probing attacks
 
+## Minimum Requirements
+
+Laravel 6.0
+PHP 7.2
+
 ## Installation
 
 You can install the package via composer:
