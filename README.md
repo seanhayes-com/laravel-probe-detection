@@ -90,3 +90,11 @@ And the call to process the request in your method
 ```php
 Probe::logRequest();
 ```
+
+## Troubleshooting
+
+If you experience file cache errors, you can change your CACHE_DRIVER to array in your .env file.
+
+```bash
+CACHE_DRIVER=array
+```
