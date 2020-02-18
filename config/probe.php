@@ -55,6 +55,7 @@ return [
 	 * See http://www.botreports.com/badbots/index.shtml
      */
     'watch_agents' => array(
+		'Installatron',
     	'80legs.com',
 		'Aboundex',
 		'BLEXBot',
@@ -97,6 +98,10 @@ return [
     'watch_uris' => array(
   	  	'/wp-login.php',
 		'/wp-admin.php',
+		'/xmlrpc.php',
+		'/wp-cron.php',
+		'/wp-content/',
+		'/wp-admin/',
 		'UNION%20SELECT%20',
     ),
 	

@@ -47,7 +47,16 @@ Route::get('/{name}/wp-login.php', function () {
 Route::get('/wp-admin/', function () {
 	\SeanHayes\Probe\Probe::logRequest();
 });
+Route::get('/wp-content/', function () {
+	\SeanHayes\Probe\Probe::logRequest();
+});
 Route::get('/{name}/wp-admin/', function () {
+	\SeanHayes\Probe\Probe::logRequest();
+});
+Route::get('/xmlrpc.php', function () {
+	\SeanHayes\Probe\Probe::logRequest();
+});
+Route::get('/wp-cron.php', function () {
 	\SeanHayes\Probe\Probe::logRequest();
 });
 Route::post('/wp-login.php', function () {
@@ -60,6 +69,12 @@ Route::post('/wp-admin/', function () {
 	\SeanHayes\Probe\Probe::logRequest();
 });
 Route::post('/{name}/wp-admin/', function () {
+	\SeanHayes\Probe\Probe::logRequest();
+});
+Route::post('/xmlrpc.php', function () {
+	\SeanHayes\Probe\Probe::logRequest();
+});
+Route::post('/wp-cron.php', function () {
 	\SeanHayes\Probe\Probe::logRequest();
 });
 ```
