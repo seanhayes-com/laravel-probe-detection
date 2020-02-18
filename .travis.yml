@@ -3,29 +3,16 @@ language: php
 php:
   - 7.2
   - 7.3
-  - hhvm
-  
-cache:
-  directories:
-    - $HOME/.composer/cache
+  - 7.4
 
 env:
-  - TESTBENCH_VERSION=3.8.* PHPUNIT_VERSION=~8 STABILITY=stable
-  - TESTBENCH_VERSION=dev-master PHPUNIT_VERSION=~9 STABILITY=dev
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest"
+    - COMPOSER_FLAGS=""
 
 before_script:
-  - travis_retry composer self-update
-  - travis_retry install --prefer-source --no-interaction --dev
-  - composer config minimum-stability ${STABILITY}
-  - travis_retry composer require "orchestra/testbench:${TESTBENCH_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update
-  
-script: phpunit
+    - travis_retry composer self-update
+    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
-matrix:
-allow_failures:
-    - env: TESTBENCH_VERSION=dev-master PHPUNIT_VERSION=~9 STABILITY=dev
-    - php: hhvm
-  fast_finish: true
-  
-install:
-  - travis_wait 60 travis_retry composer install --no-interaction --prefer-dist --no-suggest
+script:
+    - composer test
