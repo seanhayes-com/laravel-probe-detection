@@ -35,7 +35,6 @@ class Probe
         $watch_isocodes = config('probe.watch_isocodes');
         $watch_refers = config('probe.watch_refers');
         $watch_uris = config('probe.watch_uris');
-
         $dolog = false;
         $doban = false;
 
@@ -44,19 +43,18 @@ class Probe
         $ignore_this_ip = $this->exactInList($target['ip'], $ignore_ips);
         $ignore_this_agent = $this->matchInList($target['agent'], $ignore_agents);
         $ignore_this_isocode = $this->exactInList($target['iso_code'], $ignore_isocodes);
-
+        $watch_this_ip = $this->exactInList($target['ip'], $watch_ips);
+        $watch_this_agent = $this->matchInList($target['agent'], $watch_agents);
+        $watch_this_isocode = $this->exactInList($target['iso_code'], $watch_isocodes);
+        $watch_this_refer = $this->matchInList($target['refer'], $watch_refers);
+        $watch_this_uri = $this->matchInList($target['uri'], $watch_uris);
+		
         if ($ignore_this_ip || $ignore_this_agent || $ignore_this_isocode) {
             $dolog = false;
             $doban = false;
         } else {
             $dolog = true;
         }
-
-        $watch_this_ip = $this->exactInList($target['ip'], $watch_ips);
-        $watch_this_agent = $this->matchInList($target['agent'], $watch_agents);
-        $watch_this_isocode = $this->exactInList($target['iso_code'], $watch_isocodes);
-        $watch_this_refer = $this->matchInList($target['refer'], $watch_refers);
-        $watch_this_uri = $this->matchInList($target['uri'], $watch_uris);
 
         if ($watch_this_ip || $watch_this_agent || $watch_this_isocode || $watch_this_refer || $watch_this_uri) {
             $dolog = true;
